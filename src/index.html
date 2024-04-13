@@ -1,0 +1,382 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>Start Your Search!</title>
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+  <style>
+    /* CSS for Preloader */
+    .preloader {
+      display: none;
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 9999;
+      background-color: rgba(255, 255, 255, 0.9);
+      padding: 20px;
+      border-radius: 50%;
+      animation: rotate 1s linear infinite;
+    }
+
+    @keyframes rotate {
+      0% {
+        transform: translate(-50%, -50%) rotate(0deg);
+      }
+
+      100% {
+        transform: translate(-50%, -50%) rotate(360deg);
+      }
+    }
+    .search-button {
+      position: relative;
+      background: transparent;
+      border: 2px solid #ffc107;
+      color: #ffc107;
+      font-size: 20px;
+      padding: 8px 20px;
+      margin-left: 10px;
+      transition: all 0.3s ease;
+    }
+    .input-group input[type="text"] {
+      width: 100%;
+      padding: 10px;
+      margin: 5px 0;
+      box-sizing: border-box;
+      border: 2px solid #ffc107;
+      border-radius: 5px;
+    }
+    
+    .input-group button {
+      background-color: #ffc107;
+      border: none;
+      color: white;
+      padding: 10px 20px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 16px;
+      margin: 5px 0;
+      cursor: pointer;
+      border-radius: 5px;
+    }
+    
+  </style>
+  <script>
+    function toggleEmailSearch() {
+      document.getElementById('email-search-group').style.display = 'block';
+      document.getElementById('phone-search-group').style.display = 'none';
+    }
+  
+    function togglePhoneSearch() {
+      document.getElementById('email-search-group').style.display = 'none';
+      document.getElementById('phone-search-group').style.display = 'block';
+    }
+  </script>
+  
+</head>
+
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar d-flex justify-content-between">
+    <div class="container">
+      <a href="./index.html">
+        <img src="assets/logo.svg" width="173" height="25" alt="">
+      </a>
+      <div>
+        <img src="assets/search.svg" width="23" height="23" alt="Search">
+        <img class="ml-4" src="assets/person.svg" width="25" height="25" alt="Profile">
+      </div>
+    </div>
+  </nav>
+
+  <!-- Main Form -->
+  <section id="main-form" class="above-the-fold">
+    <div class="container">
+      <div class="headline text-white text-center mb-4 mb-md-5">
+        <h1 class="mb-3">Start Your Search!</h1>
+        <h2>Look up for people's name, photos and online profiles with their email address or phone number. See what you
+          find!</h2>
+        
+        
+          <div class="type-of-search" style="margin-top:30px;margin-bottom: 20px;">
+            <div style="display: flex; align-items: center;">
+              <div>
+                <h1 class="text-white text-uppercase" style="font-size: 15px;opacity:0.5;margin: bottom 10px;">Type of search:</h1>
+              </div>
+              <div style="margin: left 30px; ">
+                <button class="search-button" style=" margin-left:10px;background: transparent; border: 2px solid #ffc107; color: #ffc107; font-size: 17px;" onclick="toggleEmailSearch()">Email</button>
+                <button class="search-button" style=" margin-left:10px;background: transparent; border: 2px solid #ffc107; color: #ffc107; font-size: 17px;"  onclick="togglePhoneSearch()" >Phone</button>
+
+              </div>
+            </div>
+          </div>
+          
+      
+      <!-- <form>
+          <div class="input-group">
+            <input id="email-search-input" class="form-control" type="text" name="email" placeholder="Enter an Email Address" />
+            <p class="error-msg">Please enter a valid email address</p>
+            <button class="js-btn-search btn btn-form-submit text-uppercase" type="submit" data-form="search">Go!</button>
+          </div>
+          <div class="d-flex justify-content-start justify-content-md-end align-items-center mt-4">
+            <img src="assets/lock.svg" alt="lock">
+            <p class="form-subtext">People in the search won't be notified.</p>
+          </div>
+        </form>
+
+
+        <form>
+          <div class="input-group">
+            <input id="phone-search-input" class="form-control" type="text" name="phone" placeholder="MOBILE NUMBER" />
+            <p class="error-msg">Please enter a valid phone number</p>
+            <button class="js-btn-search btn btn-form-submit text-uppercase" type="submit" data-form="search">Go!</button>
+          </div>
+          <div class="d-flex justify-content-start justify-content-md-end align-items-center mt-4">
+            <img src="assets/lock.svg" alt="lock">
+            <p class="form-subtext">People in the search won't be notified.</p>
+          </div>
+        </form> -->
+
+
+        <form id="search-form">
+          <div class="input-group" id="email-search-group">
+            <input id="email-search-input" class="form-control" type="text" name="email" placeholder="Enter an Email Address" />
+            <p class="error-msg" id="email-error-msg">Please enter a valid email address</p>
+            <button class="js-btn-search btn btn-form-submit text-uppercase" type="submit" data-form="search">Go!</button>
+          </div>
+          <div class="input-group" id="phone-search-group" style="display: none;">
+            <input id="phone-search-input" class="form-control" type="text" name="phone" placeholder="Enter a Phone Number" />
+            <p class="error-msg" id="phone-error-msg">Please enter a valid phone number</p>
+            <button class="js-btn-search btn btn-form-submit text-uppercase" type="submit" data-form="search">Go!</button>
+          </div>
+          <div class="preloader" style="display: none;">Loading...</div>
+        </form>
+
+
+    </div>
+  </section>
+
+  <!-- Features -->
+  <section id="features" class="features">
+    <div class="container">
+      <div class="headline">
+        <h1 class="text-primary text-center mb-2 mb-md-4">Here's How It Works</h1>
+        <h2 class="text-secondary">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
+          incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
+          laboris nisi ut aliquip ex ea commodo consequat.</h2>
+      </div>
+      <div class="row">
+        <div class="list-item col-md-6 d-flex align-items-lg-center">
+          <div class="list-circle">1</div>
+          <div class="list-text">
+            <h3>Lorem Ipsum</h3>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
+              dolore magna aliqua.</p>
+          </div>
+        </div>
+        <div class="list-item col-md-6 d-flex align-items-lg-center">
+          <div class="list-circle">2</div>
+          <div class="list-text">
+            <h3>Lorem Ipsum</h3>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
+              dolore magna aliqua.</p>
+          </div>
+        </div>
+        <div class="list-item col-md-6 d-flex align-items-lg-center">
+          <div class="list-circle">3</div>
+          <div class="list-text">
+            <h3>Lorem Ipsum</h3>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
+              dolore magna aliqua.</p>
+          </div>
+        </div>
+        <div class="list-item col-md-6 d-flex align-items-lg-center">
+          <div class="list-circle">4</div>
+          <div class="list-text">
+            <h3>Lorem Ipsum</h3>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
+              dolore magna aliqua.</p>
+          </div>
+        </div>
+        <div class="list-item col-md-6 d-flex align-items-lg-center mb-md-0">
+          <div class="list-circle">5</div>
+          <div class="list-text">
+            <h3>Lorem Ipsum</h3>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
+              dolore magna aliqua.</p>
+          </div>
+        </div>
+        <div class="list-item col-md-6 d-flex align-items-lg-center mb-md-0">
+          <div class="list-circle">6</div>
+          <div class="list-text">
+            <h3>Lorem Ipsum</h3>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
+              dolore magna aliqua.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Results -->
+  <section id="results" class="result d-none">
+    <div class="container">
+      <div class="headline text-center">
+        <h1 id="result-count" class="text-primary mb-3"></h1>
+        <h2 id="result-subtext" class="result-desc"></h2>
+      </div>
+      <div class="js-result-wrap d-none">
+        <div class="result-card d-flex">
+          <div class="result-avatar">
+            <img src="assets/person.svg" alt="result image">
+          </div>
+          <div class="result-content w-100">
+            <h4 id="user-name" class="name"></h4>
+            <p id="user-description" class="user-description"></p>
+            <div class="row">
+              <div class="col-md-6">
+                <h5>Address</h5>
+                <p id="address" class="address"></p>
+              </div>
+              <div class="col-md-6">
+                <h5>Phone Numbers</h5>
+                <div class="phone-num"></div>
+              </div>
+            </div>
+            <div class="row mt-3">
+              <div class="col-md-6">
+                <h5>Email</h5>
+                <p id="email" class="email"></p>
+              </div>
+              <div class="col-md-6">
+                <h5>Relatives</h5>
+                <div class="relatives"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Search Again Form -->
+  <section id="search-again" class="search-again d-none">
+    <div class="container">
+      <div class="headline text-white text-center">
+        <h1 class="mb-3">Can't Find The Right Person?</h1>
+        <h2 class="mb-4 mb-md-5"><strong>Try Again</strong> - Make a new search</h2>
+      </div>
+      <form>
+        <div class="input-group">
+          <input id="email-search-again-input" class="form-control" type="text" name="email"
+            placeholder="Enter an Email Address" />
+          <p class="error-msg">Please enter a valid email address</p>
+          <button class="js-btn-search btn btn-form-submit text-uppercase" type="submit"
+            data-form="search-again">Go!</button>
+        </div>
+      </form>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="row align-items-center">
+        <div class="col-md-10">
+          <p class="mb-0">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut
+            labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+            aliquip ex ea commodo consequat.</p>
+        </div>
+        <div class="col-md-2 text-center text-md-right pl-0 mt-3 mt-md-0">
+          <a href="#">Terms</a>
+          <a href="#">Privacy</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const errorMsg = document.getElementById("error-msg");
+      const emailInput = document.getElementById("email-search-input");
+      const phoneInput = document.getElementById("phone-search-input");
+      const submitBtn = document.querySelector(".js-btn-search");
+      function isValidEmail(email) {
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        return emailRegex.test(email);
+      }
+      function isValidPhoneNumber(phone) {
+        const phoneRegex = /^\d{10}$/;
+        return phoneRegex.test(phone);
+      }
+      function handleSubmit(event) {
+        event.preventDefault();
+
+        const email = emailInput.value.trim();
+        const phone = phoneInput.value.trim();
+        if (isValidEmail(email) || isValidPhoneNumber(phone)) {
+          errorMsg && (errorMsg.style.display = "none");
+        } else {
+          errorMsg.style.display = "block";
+        }
+      }
+      submitBtn.addEventListener("click", handleSubmit);
+    });
+  </script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const errorMsg = document.getElementById("error-msg");
+      const emailInput = document.getElementById("email-search-input");
+      const phoneInput = document.getElementById("phone-search-input");
+      const submitBtn = document.querySelector(".js-btn-search");
+      const preloader = document.querySelector(".preloader");
+
+      // Function to validate email format
+      function isValidEmail(email) {
+        // Basic email validation regex
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        return emailRegex.test(email);
+      }
+
+      // Function to validate phone number format
+      function isValidPhoneNumber(phone) {
+        // Basic phone number validation regex
+        const phoneRegex = /^\d{10}$/; // Change regex according to your phone number format
+        return phoneRegex.test(phone);
+      }
+
+      // Function to handle form submission
+      function handleSubmit(event) {
+        event.preventDefault(); // Prevent default form submission behavior
+
+        const email = emailInput.value.trim();
+        const phone = phoneInput.value.trim();
+
+        // Check if either email or phone is valid
+        if (isValidEmail(email) || isValidPhoneNumber(phone)) {
+          // Display preloader
+          preloader.style.display = "block";
+          // Clear error message
+          errorMsg && (errorMsg.style.display = "none");
+          // Simulate delay for 2 seconds
+          setTimeout(() => {
+            // Hide preloader after 2 seconds
+            preloader.style.display = "none";
+            // Perform further actions, e.g., submit form data
+          }, 2000);
+        } else {
+          // Display error message
+          errorMsg.style.display = "block";
+        }
+      }
+
+      // Attach click event listener to the submit button
+      submitBtn.addEventListener("click", handleSubmit);
+    });
+  </script>
+</body>
+
+</html>

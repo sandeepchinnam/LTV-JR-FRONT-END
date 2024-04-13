@@ -1,0 +1,22 @@
+.navbar {
+  background: #004A80;
+  padding: 20px 16px;
+}
+
+.navbar img {
+  height: 25px; 
+  width: auto; 
+  margin-left: 25px;
+}
+
+@media (max-width: 767px) {
+  .navbar img {
+    height: 20px; 
+  }
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  .navbar img {
+    height: 23px; 
+  }
+}
