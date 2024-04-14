@@ -10,4 +10,3 @@ This will get the local server running and you should be able to see the page on
 
 
 
-GO LIVE ON https://ltv-jr-front-end.vercel.app/
